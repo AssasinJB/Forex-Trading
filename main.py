@@ -9,7 +9,6 @@ def load_data(path: str) -> pd.DataFrame:
     """
     df = pd.read_excel(path, parse_dates=['Timestamp'])
     df.set_index('Timestamp', inplace=True)
-    # Rename columns to match backtesting.py expectations
     df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
     return df
 
@@ -80,6 +79,7 @@ def run_backtest(data: pd.DataFrame):
 
 if __name__ == '__main__':
     import argparse
+    # we will need to use argparse to get the data file path from the command line
 
     parser = argparse.ArgumentParser(
         description='Backtest RSI mean-reversion on EUR/USD Forex data.'
